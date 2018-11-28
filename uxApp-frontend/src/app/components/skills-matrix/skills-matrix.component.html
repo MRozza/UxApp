@@ -1,0 +1,48 @@
+<div class="card text-white bg-dark mb-3">
+  <div class="card-header">
+    <h5 class="card-title">{{ majorSkill.Title }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">
+      {{ majorSkill.TotalScored }} of {{ majorSkill.SkillTotal }}
+    </h6>
+  </div>
+  <div class="card-body">
+    <div
+      class="row"
+      *ngFor="let skill of majorSkill.Skills; let i = index"
+      [attr.data-index]="i"
+      [ngClass]="i == majorSkill.Skills.length - 1 ? '' : 'rowEnd'"
+      
+    >
+      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+        <h3>{{ skill.Name }}</h3>
+      </div>
+      <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+        <ng5-slider
+          [manualRefresh]="manualRefresh"
+          [(value)]="skill.Total"
+          [options]="skill.options"
+          style="margin-bottom: 4rem;"
+          (userChange)="onUserChange(skill)"
+          [ngClass]="skill.Marked && 'marked-slider'"
+          (click)="markSkill(skill)"
+        >
+          <ng-template
+            #tooltipTemplate
+            let-tooltip="tooltip"
+            let-placement="placement"
+            let-content="content"
+          >
+            <div class="h-100" [ngbTooltip]="tooltip" [placement]="placement">
+              {{ content }}
+            </div>
+          </ng-template>
+        </ng5-slider>
+        <div class="row">
+          <div class="col">
+            <span> {{ skill.Grades[4 - skill.Total].Desc }} </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

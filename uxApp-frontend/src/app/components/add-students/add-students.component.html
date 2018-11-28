@@ -1,0 +1,61 @@
+<div class="row">
+  <div class="col">
+    <input
+      type="text"
+      [(ngModel)]="student.courseCode"
+      class="form-control ux-app-input"
+      required
+      placeholder="Enter Course Code..."
+      id='studentCourse'
+    />
+  </div>
+  <div class="col">
+    <input
+      type="text"
+      [(ngModel)]="student.semester"
+      class="form-control ux-app-input"
+      required
+      placeholder="Enter Semester..."
+      id='studentSemester'
+    />
+  </div>
+  <div class="col">
+    <input
+      type="number"
+      [(ngModel)]="student.studentId"
+      class="form-control ux-app-input"
+      required
+      placeholder="Enter Student ID..."
+    />
+  </div>
+</div>
+<br />
+<div class="row">
+  <div class="col-md-4">
+    <input
+      type="text"
+      [(ngModel)]="student.name"
+      class="form-control ux-app-input"
+      required
+      placeholder="Student Name..."
+    />
+  </div>
+  <div class="col-md-4">
+      <input
+        type="text"
+        [(ngModel)]="student.topicOfPresentation"
+        class="form-control ux-app-input"
+        required
+        placeholder="Enter Topic of Presentation..."
+      />
+    </div>
+  <div class="col-md-4">
+    <input
+      type="text"
+      [(ngModel)]="student.scale"
+      class="form-control ux-app-input"
+      required
+      placeholder="Scale to..."
+    />
+  </div>
+</div>

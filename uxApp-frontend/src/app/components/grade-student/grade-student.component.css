@@ -1,0 +1,19 @@
+* {
+  box-sizing: border-box;
+}
+/* Style the tab */
+.main {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px;
+}
+/* Style the buttons that are used to open the tab content */
+.tab {
+  width: 25%;
+  background-color:#FAF8F7;
+}
+
+/* Style the tab content */
+.tabcontent {
+  width: 70%;
+}

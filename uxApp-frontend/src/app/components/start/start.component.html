@@ -1,0 +1,305 @@
+<br />
+<div class="card">
+  <div class="row">
+    <div class="col-md-6">
+      <label for="numberOfStudents">Number of students:</label>
+      <input
+        type="number"
+        [(ngModel)]="numberOfStudents"
+        name="numberOfStudents"
+        class="form-control ux-app-input"
+        required
+        placeholder="Enter Number Of Students..."
+        (keyup.enter)="addStudents()"
+      />
+    </div>
+    <div class="col-md-6">
+      <label for="grader">Lecturer Name: </label>
+      <input
+        type="text"
+        [(ngModel)]="grader"
+        name="grader"
+        class="form-control ux-app-input"
+        placeholder="Lecturer Name..."
+        (keyup.enter)="addStudents()"
+      />
+    </div>
+  </div>
+  <br />
+  <div class="row">
+    <div class="col-md-3"><label>Stored Settings:</label></div>
+    <button class="btn btn-default" (click)="selectTemplate(101010)">
+      default
+    </button>
+    <div class="col-md-3" *ngFor="let setting of settings; let i = index">
+      <button class="btn btn-default" (click)="selectTemplate(i)">
+        {{ setting.courseCode }}
+      </button>
+    </div>
+  </div>
+  <h4 style="text-align: center;">Set same to all</h4>
+  <div class="row">
+    <div class="col-sm-3">
+      <div class=".checkbox-inline">
+        <label
+          ><input type="checkbox" [checked]="sm" (change)="sm = !sm" /><span
+            class="cr"
+            ><i class="cr-icon glyphicon glyphicon-ok"></i></span
+          >Semester</label
+        >
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class=".checkbox-inline">
+        <label
+          ><input type="checkbox" [checked]="cc" (change)="cc = !cc" /><span
+            class="cr"
+            ><i class="cr-icon glyphicon glyphicon-ok"></i></span
+          >Course Code</label
+        >
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class=".checkbox">
+        <label
+          ><input type="checkbox" [checked]="pt" (change)="pt = !pt" /><span
+            class="cr"
+            ><i class="cr-icon glyphicon glyphicon-ok"></i></span
+          >Presentation Topic</label
+        >
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class=".checkbox-inline">
+        <label
+          ><input type="checkbox" [checked]="sc" (change)="sc = !sc" /><span
+            class="cr"
+            ><i class="cr-icon glyphicon glyphicon-ok"></i></span
+          >Scale</label
+        >
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="sm || cc || pt || sc">
+    <div class="col-sm-3">
+      <input
+        *ngIf="sm"
+        type="text"
+        [(ngModel)]="semester"
+        class="form-control"
+        required
+        placeholder="Enter Semester..."
+      />
+    </div>
+    <div class="col-sm-3">
+      <input
+        *ngIf="cc"
+        type="text"
+        [(ngModel)]="courseCode"
+        class="form-control"
+        required
+        placeholder="Enter Course Code..."
+      />
+    </div>
+    <div class="col-sm-3">
+      <input
+        *ngIf="pt"
+        type="text"
+        [(ngModel)]="presentationTopic"
+        class="form-control"
+        required
+        placeholder="Enter Presentation Topic..."
+      />
+    </div>
+    <div class="col-sm-3">
+      <input
+        *ngIf="sc"
+        type="text"
+        [(ngModel)]="scale"
+        class="form-control"
+        required
+        placeholder="Enter Scale..."
+      />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <button
+        type="button"
+        (click)="addStudents()"
+        class="btn btn-primary btn-block"
+      >
+        <strong>Start</strong>
+      </button>
+    </div>
+  </div>
+</div>
+<br />
+<br />
+<div class="row" *ngIf="selectedSetting.majorSkills">
+  <div class="col-sm-6">
+    <input
+      type="text"
+      [(ngModel)]="selectedSetting.courseCode"
+      class="form-control"
+      required
+      placeholder="Enter Course Code..."
+    />
+  </div>
+  <div class="col-sm-6">
+    <input
+      type="number"
+      [(ngModel)]="selectedSetting.scale"
+      class="form-control"
+      required
+      placeholder="Enter Scale..."
+    />
+  </div>
+</div>
+<br />
+<div class="card-deck">
+  <div class="card" *ngFor="let majorSkill of selectedSetting.majorSkills">
+    <div class="card-header">
+      <h5 class="card-title">{{ majorSkill.Title }}</h5>
+    </div>
+    <div class="card-body">
+      <div class="row" *ngFor="let skill of majorSkill.Skills">
+        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+          <h3>{{ skill.Name }}</h3>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+          <label
+            ><input
+              type="checkbox"
+              [checked]="skill.Enabled"
+              (change)="skill.Enabled = !skill.Enabled"
+            /><span class="cr"
+              ><i class="cr-icon glyphicon glyphicon-ok"></i></span
+            >Enabled</label
+          >
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <button
+        type="button"
+        class="btn btn-primary btn-lg btn-block"
+        *ngIf="majorSkill.Skills.length < 10"
+        data-toggle="modal"
+        data-target="#addNewModal"
+        (click)="populateForm(majorSkill)"
+      >
+        Add New Skill
+      </button>
+    </div>
+  </div>
+</div>
+<br />
+<div class="row" *ngIf="selectedSetting.majorSkills">
+  <div class="col-md-12">
+    <button
+      type="button"
+      (click)="saveTemplate()"
+      class="btn btn-primary btn-block"
+    >
+      <strong>{{ isDefault ? 'Create New Template' : 'Edit Template' }}</strong>
+    </button>
+  </div>
+</div>
+<br />
+<div id="addNewModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div>
+          <form
+            [formGroup]="skillForm"
+            (ngSubmit)="addSkill($event)"
+            class="card card-body"
+          >
+            <h5 style="text-align: center" center>New Skill</h5>
+            <br />
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+                <label for="skillName">Skill Name</label>
+                <input
+                  type="text"
+                  formControlName="skillName"
+                  class="form-control"
+                  required
+                  placeholder="Skill Name..."
+                />
+              </div>
+            </div>
+            <h4 style="text-align: center">Grades Description</h4>
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+                <label for="excellentDesc">Excellent Description</label>
+                <textarea
+                  formControlName="excellentDesc"
+                  class="form-control"
+                  required
+                  placeholder="Excellent Description..."
+                ></textarea>
+              </div>
+            </div>
+            <br />
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+                <label for="goodDesc">Good Description</label>
+                <textarea
+                  formControlName="goodDesc"
+                  class="form-control"
+                  required
+                  placeholder="Good Description..."
+                ></textarea>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+                <label for="fairDesc">Fair Description</label>
+                <textarea
+                  formControlName="fairDesc"
+                  class="form-control"
+                  required
+                  placeholder="Fair Description..."
+                ></textarea>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+                <label for="poorDesc">Poor Description</label>
+                <textarea
+                  formControlName="poorDesc"
+                  class="form-control"
+                  required
+                  placeholder="Poor Description..."
+                ></textarea>
+              </div>
+            </div>
+            <br />
+            <div class="row">
+              <div class="col">
+                <button
+                  type="submit"
+                  class="form-control btn btn-success btn-large"
+                >
+                  Add
+                </button>
+              </div>
+              <div class="col">
+                <button
+                  type="submit"
+                  class="form-control btn btn-secondary btn-large"
+                  data-dismiss="modal"
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

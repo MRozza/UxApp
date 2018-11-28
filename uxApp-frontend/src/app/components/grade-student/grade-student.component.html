@@ -1,0 +1,159 @@
+<nav class="navbar sticky-top navbar-dark bg-primary">
+  <ul class="navbar-nav mr-auto navbar-brand">
+    <li class="nav-item">
+      Total
+      <span
+        style="color: aqua;
+"
+        >{{ student.totalOverAll }}</span
+      >
+      of {{ student.maximumAllowedMark }}
+    </li>
+  </ul>
+  <ul class="navbar-nav navbar-brand">
+    <li class="nav-item">
+      <span style="color: chartreuse"
+        ><b
+          >{{
+            (student.totalOverAll * 100) / student.maximumAllowedMark | number:'.1-2'
+          }}%</b
+        ></span
+      >
+    </li>
+  </ul>
+</nav>
+<br #studentDetails />
+<app-add-students [student]="student"></app-add-students>
+<br />
+<div class="main">
+  <div
+    class="nav flex-column nav-pills tab"
+    id="v-pills-tab"
+    role="tablist"
+    aria-orientation="vertical"
+  >
+    <a
+      *ngFor="let majorSkill of student.MajorSkills; let i = index"
+      class="nav-link"
+      role="tab"
+      (click)="activeTabNumber = i + 1"
+      [ngClass]="activeTabNumber === i + 1 ? 'active' : ''"
+      ><h4>{{ majorSkill.Title }}</h4>
+      <small
+        ><i
+          >{{ majorSkill.TotalScored }} of {{ majorSkill.SkillTotal }}</i
+        ></small
+      ></a
+    >
+  </div>
+  <div class="tabcontent" id="v-pills-tabContent">
+    <div
+      *ngFor="let majorSkill of student.MajorSkills; let i = index"
+      class="tab-pane fade"
+      [ngClass]="activeTabNumber === i + 1 ? 'show active' : ''"
+      role="tabpanel"
+    >
+      <app-skills-matrix
+        [majorSkill]="majorSkill"
+        [student]="student"
+        [manualRefresh]="manualRefresh"
+        *ngIf="activeTabNumber === i + 1"
+      ></app-skills-matrix>
+    </div>
+  </div>
+</div>
+<br />
+<div class="row">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <button
+      type="submit"
+      (click)="Export2Doc()"
+      class="form-control btn btn-success btn-large"
+    >
+      Download
+    </button>
+  </div>
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <button
+      class="btn form-control btn-success"
+      type="button"
+      data-toggle="modal"
+      data-target="#myModal"
+      (click)="getAttachment()"
+    >
+      Send an Email
+    </button>
+  </div>
+</div>
+<br />
+
+<div id="myModal" class="modal fade" *ngIf="isValid">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div>
+          <form
+            [formGroup]="emailForm"
+            (ngSubmit)="sendEmail()"
+            class="card card-body"
+          >
+            <h5 style="text-align: center" center>Email Form</h5>
+            <br />
+            <div class="row">
+              <div class="col">
+                <input
+                  type="email"
+                  formControlName="email"
+                  class="form-control"
+                  required
+                  placeholder="To Email..."
+                />
+              </div>
+              <div class="col"></div>
+            </div>
+            <br />
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+                <textarea
+                  formControlName="body"
+                  class="form-control"
+                  placeholder="Enter your message..."
+                ></textarea>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <a
+                  [href]="req.attachmentData"
+                  style="background-color: lightgray"
+                  (click)="Export2Doc()"
+                >
+                  {{ req.attachmentName }} <fa-icon icon="paperclip"></fa-icon
+                ></a>
+              </div>
+              <div class="col-md4"></div>
+              <div class="col-md4"></div>
+            </div>
+            <br />
+            <div class="row">
+              <div class="col">
+                <button
+                  type="submit"
+                  #sendBtn
+                  class="form-control btn btn-success btn-large"
+                >
+                  Send
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-document-builder
+  [studentId]="student.studentId"
+  [student]="student"
+></app-document-builder>
