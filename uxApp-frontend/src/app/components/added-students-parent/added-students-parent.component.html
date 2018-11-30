@@ -21,7 +21,7 @@
     </ng-template>
   </ngb-tab>
 </ngb-tabset>
-<div class="row" *ngIf="global.students.length>1">
+<div class="row" *ngIf="global.students.length > 1">
   <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
     <button
       type="submit"
@@ -78,14 +78,15 @@
               </div>
             </div>
 
-            <div class="row" *ngFor="let req of reqs">
+            <div class="row" *ngFor="let attachment of req.attachments">
               <div class="col-md-12">
                 <a
-                  [href]="req.attachmentData"
+                  [href]="attachment.attachmentData"
                   style="background-color: lightgray"
                   (click)="downloadAll(req.student)"
                 >
-                  {{ req.attachmentName }} <fa-icon icon="paperclip"></fa-icon
+                  {{ attachment.attachmentName }}
+                  <fa-icon icon="paperclip"></fa-icon
                 ></a>
               </div>
             </div>

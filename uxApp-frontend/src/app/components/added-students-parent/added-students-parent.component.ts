@@ -1,6 +1,6 @@
 import { DataService } from './../../services/data-service.service';
 import { MajorSkill } from './../../interfaces/student';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {
   CallApiService,
   ApiReq,
@@ -20,11 +20,11 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AddedStudentsParentComponent implements OnInit {
   manualRefresh = new EventEmitter<void>();
-  public emailForm = <FormGroup>{};
+  public emailFormParent = <FormGroup>{};
   public req: ApiReq = <ApiReq>{};
-
+  isValid = false;
   constructor(
-    private global: Globals,
+    public global: Globals,
     private router: Router,
     private dataService: DataService,
     private call: CallApiService,
@@ -32,10 +32,18 @@ export class AddedStudentsParentComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.req.attachments = [];
     if (!this.global.students || this.global.students.length === 0) {
       this.router.navigate(['']);
       return;
     }
+    this.emailFormParent = new FormGroup({
+      email: new FormControl(this.req.to, [
+        Validators.required,
+        Validators.email
+      ]),
+      body: new FormControl(this.req.text, [Validators.required])
+    });
     let index = 0;
     // fill array with starting json data
     this.global.students.map(async student => {
@@ -43,7 +51,12 @@ export class AddedStudentsParentComponent implements OnInit {
       student.totalOverAll = 0;
       student.name = `Student ${index}`;
       // get data from json
-      student.MajorSkills = this.global.setting.majorSkills;
+      // all same degree?
+      // student.MajorSkills = this.global.setting.majorSkills;
+      // else
+      student.MajorSkills = JSON.parse(
+        JSON.stringify(this.global.setting.majorSkills)
+      );
 
       // iterate through major skills to calculate data and init slider options
       // todo: add to a method later
@@ -99,20 +112,12 @@ export class AddedStudentsParentComponent implements OnInit {
   }
 
   emailAll() {
-    this.req.to = this.emailForm.value.email;
-    this.req.text = this.emailForm.value.body;
-    if (this.emailForm.valid) {
-      let studentIds = '';
-      this.global.students.map(student => {
-        if (this.validateStudent(student)) {
-          studentIds += `(${student.studentId}) `;
-        } else {
-          this.toastr.success(
-            `${student.name} Data is invalid and his report will not be send`,
-            'Invalid Data!'
-          );
-        }
-      });
+    this.req.to = this.emailFormParent.value.email;
+    this.req.text = this.emailFormParent.value.body;
+    if (this.emailFormParent.valid) {
+      const studentIds = this.global.students.map(student => student.studentId);
+      console.log(studentIds);
+
       if (studentIds.length === 0) {
         this.toastr.success(`All students data are invalid`, 'Invalid Data!');
         return;
@@ -120,6 +125,7 @@ export class AddedStudentsParentComponent implements OnInit {
       this.req.subject = `Result of students: ${studentIds}`;
       this.call.sendEmail(this.req).subscribe((res: any) => {
         this.toastr.success('Email has been sent successfully!', 'Success!');
+        console.log(res);
       });
     } else {
       this.toastr.error(
@@ -175,6 +181,13 @@ export class AddedStudentsParentComponent implements OnInit {
   }
 
   getAttachment() {
+    this.global.students.forEach(student => {
+      if (!this.validateStudent(student)) {
+        this.isValid = false;
+        return;
+      }
+    });
+    this.isValid = true;
     this.req.attachments = [];
     this.global.students.map(student => {
       if (this.validateStudent(student)) {

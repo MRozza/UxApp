@@ -15,7 +15,8 @@
       <span style="color: chartreuse"
         ><b
           >{{
-            (student.totalOverAll * 100) / student.maximumAllowedMark | number:'.1-2'
+            (student.totalOverAll * 100) / student.maximumAllowedMark
+              | number: '.1-2'
           }}%</b
         ></span
       >
@@ -93,7 +94,7 @@
       <div class="modal-body">
         <div>
           <form
-            [formGroup]="emailForm"
+            [formGroup]="emailFormParent"
             (ngSubmit)="sendEmail()"
             class="card card-body"
           >
@@ -122,14 +123,15 @@
               </div>
             </div>
 
-            <div class="row">
+            <div class="row" *ngIf="req.attachments[0]">
               <div class="col-md-12">
                 <a
-                  [href]="req.attachmentData"
+                  href=""
                   style="background-color: lightgray"
                   (click)="Export2Doc()"
                 >
-                  {{ req.attachmentName }} <fa-icon icon="paperclip"></fa-icon
+                  {{ req.attachments[0].attachmentName }}
+                  <fa-icon icon="paperclip"></fa-icon
                 ></a>
               </div>
               <div class="col-md4"></div>

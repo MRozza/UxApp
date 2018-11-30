@@ -50,11 +50,11 @@ export class StartComponent implements OnInit {
     this.global.isEdit = false;
     await this.dataService.getJSON().subscribe(data => {
       this.defaultSetting.majorSkills = data;
-      this.defaultSetting.majorSkills.forEach(majorSkill=>{
-        majorSkill.Skills.forEach(skill=>{
-          skill.Enabled=true;
-        })
-      })
+      this.defaultSetting.majorSkills.forEach(majorSkill => {
+        majorSkill.Skills.forEach(skill => {
+          skill.Enabled = true;
+        });
+      });
 
       const settings = JSON.parse(localStorage.getItem('courseSettings'));
       if (settings) {
@@ -75,6 +75,7 @@ export class StartComponent implements OnInit {
   }
 
   addStudents() {
+    this.global.students = [];
     for (let i = 0; i < this.numberOfStudents; i++) {
       const student = <StudentDetalis>{};
       student.semester = this.semester;
@@ -85,8 +86,8 @@ export class StartComponent implements OnInit {
       this.global.students.push(student);
     }
     console.log(this.global.students);
-    if(!this.selectedSetting.majorSkills){
-      this.selectedSetting=this.defaultSetting;
+    if (!this.selectedSetting.majorSkills) {
+      this.selectedSetting = this.defaultSetting;
     }
     this.global.setting = this.selectedSetting;
     this.router.navigate(['/grading-student']);
@@ -117,19 +118,19 @@ export class StartComponent implements OnInit {
     skill.Grades.push({
       Name: 'Good',
       Grade: 3,
-      Selected: true,
+      Selected: false,
       Desc: this.skillForm.value.goodDesc
     });
     skill.Grades.push({
       Name: 'Fair',
       Grade: 2,
-      Selected: true,
+      Selected: false,
       Desc: this.skillForm.value.fairDesc
     });
     skill.Grades.push({
       Name: 'Poor',
       Grade: 1,
-      Selected: true,
+      Selected: false,
       Desc: this.skillForm.value.poorDesc
     });
 

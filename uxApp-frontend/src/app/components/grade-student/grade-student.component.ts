@@ -1,13 +1,21 @@
 import { Attachment } from './../../services/call-api.service';
 import { MajorSkill } from './../../interfaces/student';
 import { Globals } from '../../globals';
-import { Component, OnInit, EventEmitter, Input, ElementRef, ViewChild } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  EventEmitter,
+  Input,
+  ElementRef,
+  ViewChild
+} from '@angular/core';
 import { DataService } from '../../services/data-service.service';
 import { ApiReq, CallApiService } from '../../services/call-api.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbAlert, NgbTabChangeEvent } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
 import { StudentDetalis } from '../../interfaces/student';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-grade-student',
@@ -30,10 +38,12 @@ export class GradeStudentComponent implements OnInit {
   constructor(
     private call: CallApiService,
     private toastr: ToastrService,
-    private global: Globals
+    private global: Globals,
+    private sanitizer: DomSanitizer
   ) {}
 
   async ngOnInit() {
+    this.req.attachments = [];
     this.emailForm = new FormGroup({
       email: new FormControl(this.req.to, [
         Validators.required,
@@ -158,8 +168,7 @@ export class GradeStudentComponent implements OnInit {
       document.body.removeChild(downloadLink);
     }
   }
-  scroll(id) {
-    let el = document.getElementById(id);
-    el.scrollIntoView();
+  getAttachmentContent(data): SafeUrl {
+    return this.sanitizer.bypassSecurityTrustUrl(data);
   }
 }

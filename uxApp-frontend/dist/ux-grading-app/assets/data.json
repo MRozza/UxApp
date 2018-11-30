@@ -1,0 +1,395 @@
+[
+  {
+    "Id": 1,
+    "Title": "Content Structure - Ideas",
+    "SkillTotal": 16,
+    "Skills": [
+      {
+        "Id": 1,
+        "Name": "Focus",
+        "Total": 4,
+        "Grades": [
+          {
+            "Name": "Excellent",
+            "Grade": 4,
+            "Desc": "Purpose of presentation is clear from the outset. Supporting ideas maintain clear focus on the topic.",
+            "Selected": true
+          },
+          {
+            "Name": "Good",
+            "Grade": 3,
+            "Desc": "Topic of the presentation is clear. Content generally supports the purpose.",
+            "Selected": false
+          },
+          {
+            "Name": "Fair",
+            "Grade": 2,
+            "Desc": "Presentation lacks clear direction. Big ideas not specifically identified.",
+            "Selected": false
+          },
+          {
+            "Name": "Poor",
+            "Grade": 1,
+            "Desc": "No focus at all. Audience cannot determine purpose of presentation.",
+            "Selected": false
+          }
+        ]
+      },
+      {
+        "Id": 2,
+        "Name": "Organization",
+        "Total": 4,
+        "Grades": [
+          {
+            "Name": "Excellent",
+            "Grade": 4,
+            "Desc": "Student presents information in logical, interesting sequence that audience follows",
+            "Selected": true
+          },
+          {
+            "Name": "Good",
+            "Grade": 3,
+            "Desc": "Student presents information in logical sequence that audience can follow",
+            "Selected": false
+          },
+          {
+            "Name": "Fair",
+            "Grade": 2,
+            "Desc": "Audience has difficulty following because student jumps around.",
+            "Selected": false
+          },
+          {
+            "Name": "Poor",
+            "Grade": 1,
+            "Desc": "Audience cannot understand because there is no sequence of information",
+            "Selected": false
+          }
+        ]
+      },
+      {
+        "Id": 3,
+        "Name": "Visual Aids",
+        "Total": 4,
+        "Grades": [
+          {
+            "Name": "Excellent",
+            "Grade": 4,
+            "Desc": "Visual aids are readable, clear and professional looking, enhancing the message.",
+            "Selected": true
+          },
+          {
+            "Name": "Good",
+            "Grade": 3,
+            "Desc": "Visual aids are mostly readable, clear and professional looking.",
+            "Selected": false
+          },
+          {
+            "Name": "Fair",
+            "Grade": 2,
+            "Desc": "Significant problems with readability, clarity, professionalism of visual aids.",
+            "Selected": false
+          },
+          {
+            "Name": "Poor",
+            "Grade": 1,
+            "Desc": "Visual aids are all unreadable, unclear and/or unprofessional.",
+            "Selected": false
+          }
+        ]
+      },
+      {
+        "Id": 4,
+        "Name": "Question And Answer",
+        "Total": 4,
+        "Grades": [
+          {
+            "Name": "Excellent",
+            "Grade": 4,
+            "Desc": "Speaker has prepared relevant questions for opening up the discussion and is able to stimulate discussion.",
+            "Selected": true
+          },
+          {
+            "Name": "Good",
+            "Grade": 3,
+            "Desc": "Speaker has prepared relevant questions for opening up the discussion and is somewhat able to stimulate discussion",
+            "Selected": false
+          },
+          {
+            "Name": "Fair",
+            "Grade": 2,
+            "Desc": "Speaker has prepared questions but is not really able to stimulate discussion",
+            "Selected": false
+          },
+          {
+            "Name": "Poor",
+            "Grade": 1,
+            "Desc": "Speaker has not prepared questions",
+            "Selected": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": 2,
+    "Title": "Language And Delivery",
+    "SkillTotal": 12,
+    "Skills": [
+      {
+        "Id": 1,
+        "Name": "Eye Contact",
+        "Total": 4,
+        "Grades": [
+          {
+            "Name": "Excellent",
+            "Grade": 4,
+            "Desc": "Holds attention of entire audience with the use of direct eye contact, seldom looking at notes",
+            "Selected": true
+          },
+          {
+            "Name": "Good",
+            "Grade": 3,
+            "Desc": "Consistent use of direct eye contact with audience, but often returns to notes",
+            "Selected": false
+          },
+          {
+            "Name": "Fair",
+            "Grade": 2,
+            "Desc": "Displays minimal eye contact with audience, while reading mostly from the notes.",
+            "Selected": false
+          },
+          {
+            "Name": "Poor",
+            "Grade": 1,
+            "Desc": "No eye contact with audience; entire presentation is read from notes",
+            "Selected": false
+          }
+        ]
+      },
+      {
+        "Id": 2,
+        "Name": "Enthusiasm",
+        "Total": 4,
+        "Grades": [
+          {
+            "Name": "Excellent",
+            "Grade": 4,
+            "Desc": "Demonstrates a strong, positive feeling about topic during entire presentation.",
+            "Selected": true
+          },
+          {
+            "Name": "Good",
+            "Grade": 3,
+            "Desc": "Mostly shows positive feelings about topic.",
+            "Selected": false
+          },
+          {
+            "Name": "Fair",
+            "Grade": 2,
+            "Desc": "Shows some negativity toward topic presented.",
+            "Selected": false
+          },
+          {
+            "Name": "Poor",
+            "Grade": 1,
+            "Desc": "Shows no interest in topic presented.",
+            "Selected": false
+          }
+        ]
+      },
+      {
+        "Id": 3,
+        "Name": "Elocution",
+        "Total": 4,
+        "Grades": [
+          {
+            "Name": "Excellent",
+            "Grade": 4,
+            "Desc": "Student uses a clear voice so that all audience members can hear presentation",
+            "Selected": true
+          },
+          {
+            "Name": "Good",
+            "Grade": 3,
+            "Desc": "Student's voice is clear. Most audience members can hear presentation.",
+            "Selected": false
+          },
+          {
+            "Name": "Fair",
+            "Grade": 2,
+            "Desc": "Student's voice is low. Audience has difficulty hearing presentation.Significant problems with readability, clarity, professionalism of visual aids.",
+            "Selected": false
+          },
+          {
+            "Name": "Poor",
+            "Grade": 1,
+            "Desc": "Student mumbles, speaks too quietly for a majority of audience to hear.",
+            "Selected": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Id": 3,
+    "Title": "Technical",
+    "SkillTotal": 20,
+    "Skills": [
+      {
+        "Id": 1,
+        "Name": "Knowledge",
+        "Total": 4,
+        "Grades": [
+          {
+            "Name": "Excellent",
+            "Grade": 4,
+            "Desc": "Demonstrate clear knowledge and understanding of the subject",
+            "Selected": true
+          },
+          {
+            "Name": "Good",
+            "Grade": 3,
+            "Desc": "Show clear knowledge and understanding of most subject area",
+            "Selected": false
+          },
+          {
+            "Name": "Fair",
+            "Grade": 2,
+            "Desc": "Show some knowledge and understanding of the subject area",
+            "Selected": false
+          },
+          {
+            "Name": "Poor",
+            "Grade": 1,
+            "Desc": "Show no knowledge and understanding of the subject area",
+            "Selected": false
+          }
+        ]
+      },
+      {
+        "Id": 2,
+        "Name": "Research",
+        "Total": 4,
+        "Grades": [
+          {
+            "Name": "Excellent",
+            "Grade": 4,
+            "Desc": "Evidence of thorough research and preparation",
+            "Selected": true
+          },
+          {
+            "Name": "Good",
+            "Grade": 3,
+            "Desc": "Evidence of sufficient research and preparation",
+            "Selected": false
+          },
+          {
+            "Name": "Fair",
+            "Grade": 2,
+            "Desc": "Evidence of some research and preparation",
+            "Selected": false
+          },
+          {
+            "Name": "Poor",
+            "Grade": 1,
+            "Desc": "Evidence of no research and preparation",
+            "Selected": false
+          }
+        ]
+      },
+      {
+        "Id": 3,
+        "Name": "Discussion Of New Ideas",
+        "Total": 4,
+        "Grades": [
+          {
+            "Name": "Excellent",
+            "Grade": 4,
+            "Desc": "Demonstrate  thorough knowledge while discussing new ideas",
+            "Selected": true
+          },
+          {
+            "Name": "Good",
+            "Grade": 3,
+            "Desc": "Show  sufficient knowledge while discussing new ideas",
+            "Selected": false
+          },
+          {
+            "Name": "Fair",
+            "Grade": 2,
+            "Desc": "Show  some knowledge while discussing new ideas",
+            "Selected": false
+          },
+          {
+            "Name": "Poor",
+            "Grade": 1,
+            "Desc": "Show  no knowledge while discussing new ideas",
+            "Selected": false
+          }
+        ]
+      },
+      {
+        "Id": 4,
+        "Name": "Argument",
+        "Total": 4,
+        "Grades": [
+          {
+            "Name": "Excellent",
+            "Grade": 4,
+            "Desc": "Opinion set out in a concise and persuasive manner",
+            "Selected": true
+          },
+          {
+            "Name": "Good",
+            "Grade": 3,
+            "Desc": "Opinion is not concise and persuasive manner",
+            "Selected": false
+          },
+          {
+            "Name": "Fair",
+            "Grade": 2,
+            "Desc": "Opinion is clearly demonstrated but not persuasive ",
+            "Selected": false
+          },
+          {
+            "Name": "Poor",
+            "Grade": 1,
+            "Desc": "Opinion is not demonstrated or highlighted",
+            "Selected": false
+          }
+        ]
+      },
+      {
+        "Id": 5,
+        "Name": "Questions",
+        "Total": 4,
+        "Grades": [
+          {
+            "Name": "Excellent",
+            "Grade": 4,
+            "Desc": "Responded very well to technical questions ",
+            "Selected": true
+          },
+          {
+            "Name": "Good",
+            "Grade": 3,
+            "Desc": "Could answer most technical questions related to the presentation",
+            "Selected": false
+          },
+          {
+            "Name": "Fair",
+            "Grade": 2,
+            "Desc": "Could answer some technical questions related to the presentation",
+            "Selected": false
+          },
+          {
+            "Name": "Poor",
+            "Grade": 1,
+            "Desc": "Could not answer any technical questions related to the presentation",
+            "Selected": false
+          }
+        ]
+      }
+    ]
+  }
+]
