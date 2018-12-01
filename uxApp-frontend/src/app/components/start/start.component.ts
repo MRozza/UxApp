@@ -53,6 +53,14 @@ export class StartComponent implements OnInit {
       this.defaultSetting.majorSkills.forEach(majorSkill => {
         majorSkill.Skills.forEach(skill => {
           skill.Enabled = true;
+          skill.Total = 4;
+          skill.Grades.forEach(grade => {
+            if (grade.Grade === 4) {
+              grade.Selected = true;
+            } else {
+              grade.Selected = false;
+            }
+          });
         });
       });
 

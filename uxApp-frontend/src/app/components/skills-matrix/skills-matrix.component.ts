@@ -20,8 +20,8 @@ export class SkillsMatrixComponent implements OnInit {
 
   onUserChange(skillSelected: Skill): void {
     // deselect all skill
-    this.majorSkill.Skills.map(skill => {
-      skill.Grades.map(grade => (grade.Selected = false));
+    skillSelected.Grades.map(grade => {
+      grade.Selected = false;
     });
     // get grade by value
     const gradeSelected = skillSelected.Grades.filter(
@@ -29,15 +29,15 @@ export class SkillsMatrixComponent implements OnInit {
     )[0];
     gradeSelected.Selected = true;
     let result = 0;
-    this.majorSkill.Skills.map(skill => {
+    this.majorSkill.Skills.forEach(skill => {
       result += skill.Total;
     });
     this.majorSkill.TotalScored = result;
-    skillSelected.Marked=true;
+    skillSelected.Marked = true;
     this.calculateStudentTotal();
   }
-  markSkill(skill: Skill){
-    skill.Marked=true;
+  markSkill(skill: Skill) {
+    skill.Marked = true;
   }
   calculateStudentTotal() {
     this.student.totalOverAll = 0;

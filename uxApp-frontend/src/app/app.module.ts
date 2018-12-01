@@ -34,9 +34,17 @@ library.add(
   faPaperclip
 );
 const appRoutes: Routes = [
-  { path: 'start', component: StartComponent },
+  {
+    path: 'start',
+    component: StartComponent,
+    pathMatch: 'full'
+  },
   { path: '', redirectTo: '/start', pathMatch: 'full' },
-  { path: 'grading-student', component: AddedStudentsParentComponent }
+  {
+    path: 'grading-student',
+    component: AddedStudentsParentComponent,
+    pathMatch: 'full'
+  }
   // { path: '**', component: PageNotFoundComponent }
 ];
 

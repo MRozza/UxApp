@@ -23,6 +23,9 @@ export class CallApiService {
   constructor(private http: HttpClient) {}
 
   sendEmail(req: ApiReq): Observable<any> {
-    return this.http.post<any>('http://localhost:8000/api/sendEmail', req);
+    return this.http.post<any>(
+      'https://ux-backend.herokuapp.com/api/sendEmail',
+      req
+    );
   }
 }
