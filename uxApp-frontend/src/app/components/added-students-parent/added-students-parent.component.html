@@ -9,7 +9,7 @@
       ><h4>{{ student.name || 'Student ' + (i + 1) }}</h4>
       <small *ngIf="student.studentId"
         ><i
-          ><strong>ID: {{ student.studentId }}</strong></i
+          ><strong>ID: {{ student.studentId + '' }}</strong></i
         ></small
       ></ng-template
     >
@@ -108,9 +108,22 @@
     </div>
   </div>
 </div>
-<div *ngFor="let student of global.students">
-  <app-document-builder
-    [studentId]="student.studentId"
-    [student]="student"
-  ></app-document-builder>
+<br />
+<div class="row">
+  <div class="col">
+    <button
+      type="submit"
+      class="form-control btn btn-danger btn-large"
+      (click)="reset()"
+    >
+      Reset and start over
+    </button>
+  </div>
+  <br />
+  <div *ngFor="let student of global.students">
+    <app-document-builder
+      [studentId]="student.studentId"
+      [student]="student"
+    ></app-document-builder>
+  </div>
 </div>

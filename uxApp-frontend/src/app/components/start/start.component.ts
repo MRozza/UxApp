@@ -162,5 +162,9 @@ export class StartComponent implements OnInit {
       this.settings.push(this.selectedSetting);
     }
     localStorage.setItem('courseSettings', JSON.stringify(this.settings));
+    this.toastr.success(
+      `Template ${this.selectedSetting.courseCode} saved and selected`,
+      'Template Saved!'
+    );
   }
 }

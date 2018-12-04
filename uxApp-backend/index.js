@@ -13,7 +13,7 @@ var corsOptions = {
 app.use(cors());
 app.options('*', cors());
 
-app.listen(8000, () => {
+app.listen(process.env.PORT || 5000, () => {
   console.log('Server started!');
 });
 app.use(bodyParser.json({ limit: '50mb' }));

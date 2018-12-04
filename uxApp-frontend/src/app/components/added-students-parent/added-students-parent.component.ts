@@ -34,7 +34,7 @@ export class AddedStudentsParentComponent implements OnInit {
   ngOnInit() {
     this.req.attachments = [];
     if (!this.global.students || this.global.students.length === 0) {
-      this.router.navigate(['']);
+      this.router.navigate(['/start']);
       return;
     }
     this.emailFormParent = new FormGroup({
@@ -211,5 +211,8 @@ export class AddedStudentsParentComponent implements OnInit {
     return (
       'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(html)
     );
+  }
+  reset() {
+    window.location.reload();
   }
 }

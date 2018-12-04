@@ -1,3 +1,4 @@
 node_modules/
 uxApp-backend/node_modules/
 uxApp-frontend/node_modules/
+uxApp-frontend/dist/

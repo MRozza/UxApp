@@ -31,7 +31,8 @@
     <button class="btn btn-default" (click)="selectTemplate(101010)">
       default
     </button>
-    <div class="col-md-3" *ngFor="let setting of settings; let i = index">
+    <div *ngFor="let setting of settings; let i = index">
+      &nbsp;
       <button class="btn btn-default" (click)="selectTemplate(i)">
         {{ setting.courseCode }}
       </button>
@@ -202,7 +203,9 @@
       (click)="saveTemplate()"
       class="btn btn-primary btn-block"
     >
-      <strong>{{ isDefault ? 'Create New Template' : 'Edit Template' }}</strong>
+      <strong>{{
+        isDefault ? 'Create And Save New Template' : 'Edit And Save Template'
+      }}</strong>
     </button>
   </div>
 </div>

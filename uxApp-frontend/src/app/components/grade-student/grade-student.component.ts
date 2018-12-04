@@ -9,7 +9,6 @@ import {
   ElementRef,
   ViewChild
 } from '@angular/core';
-import { DataService } from '../../services/data-service.service';
 import { ApiReq, CallApiService } from '../../services/call-api.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbAlert, NgbTabChangeEvent } from '@ng-bootstrap/ng-bootstrap';
